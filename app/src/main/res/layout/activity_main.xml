@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:ignore="all"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="100dp"
+            android:paddingBottom="200dp"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/img"
+                android:layout_marginVertical="16dp"
+                android:padding="8dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter Server IP address: "
+                android:layout_marginTop="8dp"
+                android:textColor="@color/gray"
+                />
+            <EditText
+                android:id="@+id/serverIpAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textUri"
+                android:padding="18dp"
+                android:textColor="@color/deep_pink"
+                android:background="@drawable/edittext_style_bg"
+                android:layout_marginVertical="8dp"
+                android:hint="192.168.0.101"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter Code: "
+                android:layout_marginTop="8dp"
+                android:textColor="@color/gray"
+                />
+            <EditText
+                android:id="@+id/connectorCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:padding="18dp"
+                android:maxLength="8"
+                android:background="@drawable/edittext_style_bg"
+                android:textColor="@color/deep_pink"
+                android:layout_marginVertical="8dp"
+                android:hint="1234 5678"/>
+            <Button
+                android:id="@+id/connectBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:padding="18dp"
+                android:background="@drawable/edittext_style_bg"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/deep_pink"
+                android:text="Connect"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/progressCircular"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:focusable="true"
+        android:clickable="true"
+        android:gravity="center"
+        android:visibility="gone"
+        android:background="#4D000000">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:indeterminateTint="@color/deep_pink"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+</RelativeLayout>
