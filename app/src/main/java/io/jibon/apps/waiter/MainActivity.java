@@ -52,14 +52,16 @@ public class MainActivity extends AppCompatActivity {
                 serverIpAddress.findFocus();
             }
         });
-        // set default value
-        serverIpAddress.setText(customTools.setPref("serverIpAddress", null));
+
         // get default values
+
         String prevServerIP = customTools.setPref("serverIpAddress", null);
         String prevConnectorCode = customTools.setPref("connectorCode", null);
         if (!prevServerIP.equals("") && !prevConnectorCode.equals("")){
             connectToNetwork("http://"+prevServerIP+"/json/app?connectorCode="+prevConnectorCode);
         }
+        // set default value
+        serverIpAddress.setText(prevServerIP);
     }
 
     protected void connectToNetwork(String url){
