@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:ignore="all"
-    tools:context=".TablesSelector">
+    tools:context=".AddItemsToOrderItemListActivity">
     <TextView
-        android:id="@+id/appTitle"
+        android:id="@+id/pageTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="PT APP"
+        android:text="Items"
         android:gravity="center_vertical"
         android:padding="16dp"
         android:background="@color/deep_pink"
@@ -18,26 +18,13 @@
         android:textSize="20dp"
         />
 
-    <TextView
-        android:id="@+id/pageTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/appTitle"
-        android:gravity="center"
-        android:padding="8dp"
-        android:text="Select Table" />
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/my_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/pageTitle"
-        android:id="@+id/refreshLayout"
-        >
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/my_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/pageTitle" />
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        android:layout_below="@+id/pageTitle"/>
+
+
     <RelativeLayout
         android:id="@+id/progressCircular"
         android:layout_width="match_parent"

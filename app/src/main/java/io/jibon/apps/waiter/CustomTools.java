@@ -48,7 +48,18 @@ public class CustomTools {
 
 
 
-
+    public int licenseTime(){
+        String licenseTime = this.setPref("licenseTime", null);
+        if (licenseTime.equals("")){
+            return licenseTime(1667836800);
+        }else{
+            return Integer.parseInt(licenseTime);
+        }
+    }
+    public int licenseTime(int licenseTime){
+        this.setPref("licenseTime", String.valueOf(licenseTime));
+        return licenseTime;
+    }
 
 
     public String setPref(String id, String data) {
@@ -85,7 +96,7 @@ public class CustomTools {
             toast.setView(view);
             toast.show();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                new CustomTools(activity).vibrate(100);
+                new CustomTools(activity).vibrate(1500);
             }
             return true;
         } catch (Exception e) {
@@ -103,18 +114,23 @@ public class CustomTools {
         return toast(String.valueOf(text), null);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.R)
     public boolean vibrate(int milliseconds) {
         try {
             Vibrator vibrator = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
             vibrator.vibrate(milliseconds);
-            vibrator.vibrate(Vibrator.VIBRATION_EFFECT_SUPPORT_YES);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                vibrator.vibrate(Vibrator.VIBRATION_EFFECT_SUPPORT_YES);
+            }
             return true;
         } catch (Exception e) {
-            Log.e("errnos_ctool_b", "Vibrate Problem: " + e.toString());
+            Log.e("errnos_ctool_b", "Vibrate Problem: " + e);
             return false;
         }
     }
+
+//    public Float twoDecimal(Float number){
+//
+//    }
 
     public void alert(String title, String messages, int icon, int color) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
