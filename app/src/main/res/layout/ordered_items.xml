@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="all"
-    android:paddingHorizontal="16dp"
-    android:paddingVertical="8dp"
+    android:paddingStart="32dp"
+    android:gravity="center_vertical"
     android:layout_height="wrap_content">
     <TextView
         android:layout_width="0dp"
@@ -39,4 +39,15 @@
         android:gravity="right"
         android:id="@+id/itemTotal"
         android:text="Total"/>
+    <ImageView
+        android:id="@+id/removeItemBtn"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:src="@drawable/baseline_close_24"
+        android:tint="@color/deep_pink"
+        android:paddingVertical="8dp"
+        android:foreground="?selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_height="0px"/>
 </LinearLayout>

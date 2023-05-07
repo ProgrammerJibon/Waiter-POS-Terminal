@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected RelativeLayout progressCircular;
     protected Button connectBtn;
     protected Activity activity;
-    int  licenseTime = 1696156800;
+    long  licenseTime = 0;
     protected CustomTools customTools;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // get default values
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2024, Calendar.JANUARY, 1, 0, 0, 0);
+        licenseTime = calendar.getTimeInMillis() / 1000;
+
 
         String prevServerIP = customTools.setPref("serverIpAddress", null);
         String prevConnectorCode = customTools.setPref("connectorCode", null);

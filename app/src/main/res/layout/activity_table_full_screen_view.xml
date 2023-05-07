@@ -23,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/pageTitle"
+        android:visibility="gone"
         android:id="@+id/bookTableView">
 
         <ScrollView
@@ -93,7 +94,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/pageTitle"
-        android:visibility="gone"
         android:id="@+id/openTableView">
         <ScrollView
             android:layout_width="match_parent"
@@ -126,6 +126,7 @@
                     android:paddingHorizontal="16dp"
                     android:paddingVertical="8dp"
                     android:text="Customer Name: "
+                    android:visibility="gone"
                     android:id="@+id/customerNameTextView"/>
                 <TextView
                     android:layout_width="match_parent"
@@ -133,13 +134,14 @@
                     android:paddingHorizontal="16dp"
                     android:paddingVertical="8dp"
                     android:text="Customer Number: "
+                    android:visibility="gone"
                     android:id="@+id/customerPhoneTextView"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="16dp"
                     android:paddingVertical="8dp"
-                    android:text="Served By: "
+                    android:text="Serving By: "
                     android:id="@+id/servedByTextView"/>
                 <TextView
                     android:layout_width="match_parent"
@@ -152,7 +154,6 @@
                 <include
                     layout="@layout/ordered_items"
                     android:layout_width="match_parent"
-                    android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="8dp"/>
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -178,7 +179,8 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
+                        android:textSize="20dp"
                         android:textStyle="bold"
                         android:text="Total"/>
                     <TextView
@@ -191,13 +193,21 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:gravity="right"
+                        android:textSize="20dp"
+                        android:textColor="@color/deep_pink"
                         android:id="@+id/itemOnlyTotal"
-                        android:text="0.00"/>
+                        android:text="$0.00"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text=""/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:paddingHorizontal="16dp"
                     android:paddingVertical="8dp"
+                    android:visibility="gone"
                     android:layout_height="wrap_content">
                     <TextView
                         android:layout_width="0dp"
@@ -235,6 +245,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:visibility="gone"
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="wrap_content"
@@ -274,6 +285,18 @@
                 android:layout_marginVertical="16dp"
                 android:foreground="?selectableItemBackground"
                 android:backgroundTint="#FFFF9800"
+                android:background="@drawable/edittext_style_bg"
+                android:textColor="@color/white"/>
+            <Button
+                android:id="@+id/printItemsButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Print Items"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="16dp"
+                android:foreground="?selectableItemBackground"
+                android:backgroundTint="@color/light_green"
                 android:background="@drawable/edittext_style_bg"
                 android:textColor="@color/white"/>
             <Button
