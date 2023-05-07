@@ -1,10 +1,5 @@
 package io.jibon.apps.waiter;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,12 +8,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import io.jibon.apps.waiter.Adapters.UserAdapter;
 
@@ -50,6 +47,8 @@ public class TablesSelector extends AppCompatActivity {
         connectorCode = customTools.setPref("connectorCode", null);
         loadTableList();
         refreshLayout.setOnRefreshListener(this::loadTableList);
+
+        ((TextView) findViewById(R.id.appTitle)).setText(CustomTools.TITLE);
 
         activity.findViewById(R.id.appTitle).setOnLongClickListener(v -> {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://g.dev/programmerjibon/")));

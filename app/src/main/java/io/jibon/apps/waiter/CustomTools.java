@@ -2,43 +2,29 @@ package io.jibon.apps.waiter;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.media.RingtoneManager;
 import android.os.Build;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
-import org.json.JSONObject;
-
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.net.URLEncoder;
 import java.util.Objects;
 
 public class CustomTools {
     protected SharedPreferences preferences;
     protected SharedPreferences.Editor preferencesEditor;
     protected Activity activity;
+    public static String TITLE = "AlMukhtar Cafe";
 
     public CustomTools(Activity activity) {
         this.activity = activity;
@@ -89,7 +75,7 @@ public class CustomTools {
             ((TextView) view.findViewById(R.id.Custom_toast_text)).setText(text);
             if (drawable != null) {
                 ((ImageView) view.findViewById(R.id.Custom_toast_icon)).setImageResource(drawable);
-                ((ImageView) view.findViewById(R.id.Custom_toast_icon)).setColorFilter(ContextCompat.getColor(activity, color), PorterDuff.Mode.SRC_IN);;
+                ((ImageView) view.findViewById(R.id.Custom_toast_icon)).setColorFilter(ContextCompat.getColor(activity, color), PorterDuff.Mode.SRC_IN);
             }
             Toast toast = new Toast(activity.getApplicationContext());
             toast.setDuration(Toast.LENGTH_LONG);
@@ -100,7 +86,7 @@ public class CustomTools {
             }
             return true;
         } catch (Exception e) {
-            Log.e("errnos_ctool_a", "Custom Toast Problem: " + e.toString());
+            Log.e("errnos_ctool_a", "Custom Toast Problem: " + e);
             return false;
         }
     }

@@ -1,9 +1,5 @@
 package io.jibon.apps.waiter;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -15,6 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.goodcom.gcprinter.GcPrinterUtils;
 
@@ -40,7 +40,7 @@ public class TableFullScreenView extends AppCompatActivity {
     public OrderedItemsAdapter orderedItemsAdapter;
     public JSONArray orderedItem = new JSONArray();
 
-    public String TITLE = "PT APP";
+    public String TITLE = CustomTools.TITLE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -220,7 +220,7 @@ public class TableFullScreenView extends AppCompatActivity {
 //                GcPrinterUtils.drawText("", GcPrinterUtils.fontSmallBold, "Vat ("+tableClosed.getString("vat")+")", GcPrinterUtils.fontSmall, String.format("%.2f",totalTax), GcPrinterUtils.fontSmallBold);
 //                GcPrinterUtils.drawCustom("In Total\t "+String.format("%.2f", totalWhenBooked+totalTax), GcPrinterUtils.fontMedium, GcPrinterUtils.alignRight);
                 GcPrinterUtils.drawNewLine();
-                GcPrinterUtils.drawBarcode(order_id + "\nUHJvZ3JhbW1lckppYm9u", GcPrinterUtils.alignCenter, GcPrinterUtils.barcodeQrCode);
+                GcPrinterUtils.drawBarcode(order_id + "\nProgrammerJibon", GcPrinterUtils.alignCenter, GcPrinterUtils.barcodeQrCode);
 
                 GcPrinterUtils.printText(activity, true);
             }catch (Exception e){
@@ -271,7 +271,7 @@ public class TableFullScreenView extends AppCompatActivity {
                         }
                     }
                 }catch (Exception e){
-                    Log.e("errnos ", url+"\t"+String.valueOf(e));
+                    Log.e("errnos ", url + "\t" + e);
                 }
             }));
             internet2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);

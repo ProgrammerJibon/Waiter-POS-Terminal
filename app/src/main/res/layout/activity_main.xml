@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#1C1B17"
     tools:ignore="all"
     tools:context=".MainActivity2">
 
@@ -12,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Debug v.1.5"
+        android:visibility="gone"
         android:textColor="@color/black"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"/>
@@ -41,25 +41,28 @@
                 android:layout_height="wrap_content"
                 android:text="Enter IP address: "
                 android:layout_marginTop="8dp"
-                android:textColor="@color/gray"
+                android:textColor="@color/white"
                 />
+
             <EditText
                 android:id="@+id/serverIpAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textUri"
                 android:padding="18dp"
-                android:textColor="@color/deep_pink"
+                android:textColor="@color/white"
+                android:textColorHint="@color/gray"
                 android:background="@drawable/edittext_style_bg"
                 android:layout_marginVertical="8dp"
-                android:hint="127.0.0.1"/>
+                android:hint="127.0.0.1" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Enter Code: "
                 android:layout_marginTop="8dp"
-                android:textColor="@color/gray"
+                android:textColor="@color/white"
                 />
+
             <EditText
                 android:id="@+id/connectorCode"
                 android:layout_width="match_parent"
@@ -68,9 +71,10 @@
                 android:padding="18dp"
                 android:maxLength="8"
                 android:background="@drawable/edittext_style_bg"
-                android:textColor="@color/deep_pink"
+                android:textColor="@color/white"
+                android:textColorHint="@color/gray"
                 android:layout_marginVertical="8dp"
-                android:hint="1234 5678"/>
+                android:hint="1234 5678" />
             <Button
                 android:id="@+id/connectBtn"
                 android:layout_width="match_parent"
