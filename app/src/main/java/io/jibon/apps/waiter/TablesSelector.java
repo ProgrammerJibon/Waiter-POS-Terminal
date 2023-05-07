@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,6 +50,12 @@ public class TablesSelector extends AppCompatActivity {
         connectorCode = customTools.setPref("connectorCode", null);
         loadTableList();
         refreshLayout.setOnRefreshListener(this::loadTableList);
+
+        activity.findViewById(R.id.appTitle).setOnLongClickListener(v -> {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://g.dev/programmerjibon/")));
+            activity.finish();
+            return false;
+        });
     }
 
     @Override

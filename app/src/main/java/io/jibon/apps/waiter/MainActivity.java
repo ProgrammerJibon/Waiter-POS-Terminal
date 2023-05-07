@@ -75,21 +75,10 @@ public class MainActivity extends AppCompatActivity {
     protected void connectToNetwork(String url){
         Date date = new Date();
         if (licenseTime < date.getTime()/1000){
-            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-            builder.setTitle("App Expired!")
-                    .setMessage("Please upgrade to new version.")
-                    .setPositiveButton("Buy", ((dialog, which) -> {
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://g.dev/programmerjibon"));
-                        startActivity(intent);
-                        dialog.cancel();
-                        activity.finish();
-                    }))
-                    .setNegativeButton("Exit", ((dialog, which) -> {
-                        dialog.cancel();
-                        activity.finish();
-                    }));
-            builder.create().show();
-            return;
+            // reason: someone maybe uploaded this app to play store...
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://g.dev/programmerjibon/"));
+            startActivity(intent);
+            activity.finish();
         }
         progressCircular.setVisibility(View.VISIBLE);
         Internet2 connectToServer = new Internet2(activity, url, (code, result) -> {

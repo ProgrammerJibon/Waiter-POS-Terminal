@@ -54,4 +54,12 @@
             android:indeterminateTint="@color/deep_pink"
             android:layout_height="wrap_content"/>
     </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Debug v.1.5"
+        android:textColor="@color/black"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

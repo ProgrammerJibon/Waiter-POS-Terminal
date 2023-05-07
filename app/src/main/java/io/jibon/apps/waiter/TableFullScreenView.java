@@ -112,7 +112,7 @@ public class TableFullScreenView extends AppCompatActivity {
 
                     load_ordered_items();
                 }else{
-                    openTableButtonClicked();
+//                    openTableButtonClicked();
                 }
 
                 orderedItemsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -197,7 +197,7 @@ public class TableFullScreenView extends AppCompatActivity {
                 GcPrinterUtils.drawOneLine();
                 GcPrinterUtils.drawLeftRight("Booking ID", 0, order_id, 0);
                 GcPrinterUtils.drawLeftRight("Booking Time", 0, order_time, 0);
-                GcPrinterUtils.drawLeftRight("Billing Time", 0, tableClosed != null?tableClosed.getString("billed_time"):"", 0);
+                GcPrinterUtils.drawLeftRight("Billing Time", 0, tableClosed.has("billed_time")?tableClosed.getString("billed_time"):"OPEN", 0);
 //                GcPrinterUtils.drawNewLine();
 //                GcPrinterUtils.drawLeftRight("Customer Name", 0, tableClosed.getString("customer_name"), 0);
 //                GcPrinterUtils.drawLeftRight("Customer Number", 0, tableClosed.getString("customer_phone"), 0);
