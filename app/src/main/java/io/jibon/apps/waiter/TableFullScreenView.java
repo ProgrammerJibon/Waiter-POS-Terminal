@@ -31,7 +31,7 @@ public class TableFullScreenView extends AppCompatActivity {
     public Activity activity;
     public Button openTableButton, closeTableButton, addItemTableButton, printItemsButton;
     public EditText customerName, customerPhone;
-    public String ipAddress = "127.0.0.1", connectorCode = "0";
+    public String ipAddress = "127.0.0.1", connectorCode = "0", connectionUsername = "";
     protected String table_id, order_id, customer_name, customer_phone, order_taker_name, order_status, order_time, orderTaxPercent;
     protected TextView pageTitle, orderIDTextShow, bookingTime, customerNameTextView, customerPhoneTextView, servedByTextView, itemOnlyTotal, totalVat, orderTaxPercentage, inTotalPrice;
     private CustomTools customTools;
@@ -102,13 +102,19 @@ public class TableFullScreenView extends AppCompatActivity {
                     order_status = bundle.getString("order_status");
                     order_time = bundle.getString("order_time");
                     orderTaxPercent = bundle.getString("vat");
+                    connectionUsername = bundle.getString("connectionUsername");
 
-                    orderIDTextShow.setText("Booking ID: "+order_id);
-                    bookingTime.setText("Sit Time: "+order_time);
-                    customerNameTextView.setText("Customer Name: "+customer_name);
-                    customerPhoneTextView.setText("Customer Number: "+customer_phone);
-                    servedByTextView.setText("Served by: "+order_taker_name);
-                    orderTaxPercentage.setText(orderTaxPercent+"%");
+                    orderIDTextShow.setText("Booking ID: " + order_id);
+                    bookingTime.setText("Sit Time: " + order_time);
+                    customerNameTextView.setText("Customer Name: " + customer_name);
+                    customerPhoneTextView.setText("Customer Number: " + customer_phone);
+                    servedByTextView.setText("Served by: " + order_taker_name);
+                    orderTaxPercentage.setText(orderTaxPercent + "%");
+
+                    if (!connectionUsername.equalsIgnoreCase(order_taker_name)) {
+                        addItemTableButton.setVisibility(View.GONE);
+                        closeTableButton.setVisibility(View.GONE);
+                    }
 
                     load_ordered_items();
                 }else{
@@ -214,7 +220,7 @@ public class TableFullScreenView extends AppCompatActivity {
                     GcPrinterUtils.drawText(item.getString("name_then"), GcPrinterUtils.fontSmallBold, item.getString("price_then")+" x "+item.getString("item_quantity"), GcPrinterUtils.fontSmall, String.format("%.2f", thisPrice), GcPrinterUtils.fontSmallBold);
                 }
                 GcPrinterUtils.drawOneLine();
-                GcPrinterUtils.drawText("", GcPrinterUtils.fontSmallBold, "Total", GcPrinterUtils.fontSmall, String.format("%.2f", totalPrice), GcPrinterUtils.fontSmallBold);
+                GcPrinterUtils.drawText("", GcPrinterUtils.fontSmallBold, "Total", GcPrinterUtils.fontSmall, "€" + String.format("%.2f", totalPrice), GcPrinterUtils.fontSmallBold);
 //                Float totalWhenBooked = Float.parseFloat(tableClosed.getString("total_when_booked"));
 //                Float totalTax = totalWhenBooked * (Float.parseFloat(tableClosed.getString("vat")) / 100);
 //                GcPrinterUtils.drawText("", GcPrinterUtils.fontSmallBold, "Vat ("+tableClosed.getString("vat")+")", GcPrinterUtils.fontSmall, String.format("%.2f",totalTax), GcPrinterUtils.fontSmallBold);
@@ -263,11 +269,11 @@ public class TableFullScreenView extends AppCompatActivity {
                                 Float thisItemTotal = Float.parseFloat(item.getString("price_then")) * Float.parseFloat(item.getString("item_quantity"));
                                 makeTotal += thisItemTotal;
                             }
-                            itemOnlyTotal.setText("$"+String.format("%.2f",makeTotal));
+                            itemOnlyTotal.setText("€" + String.format("%.2f", makeTotal));
                             Float vat = makeTotal * (Float.parseFloat(orderTaxPercent)/100);
-                            totalVat.setText("$"+String.format("%.2f",vat));
+                            totalVat.setText("€" + String.format("%.2f", vat));
                             String inTotalPriceText = String.format("%.2f", makeTotal+vat);
-                            inTotalPrice.setText("$"+inTotalPriceText);
+                            inTotalPrice.setText("€" + inTotalPriceText);
                         }
                     }
                 }catch (Exception e){

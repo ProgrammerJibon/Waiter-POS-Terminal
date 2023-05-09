@@ -6,4 +6,5 @@
     <string name="details_of_table">Details of table</string>
     <string name="foo">@string/app_name</string>
     <string name="close_table">Close Table</string>
+    <string name="debug">gone</string>
 </resources>

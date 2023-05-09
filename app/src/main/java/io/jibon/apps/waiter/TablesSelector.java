@@ -38,6 +38,7 @@ public class TablesSelector extends AppCompatActivity {
         progressCircular = activity.findViewById(R.id.progressCircular);
         recyclerView = activity.findViewById(R.id.my_recycler_view);
         refreshLayout = activity.findViewById(R.id.refreshLayout);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         userAdapter = new UserAdapter(activity, new JSONArray());
         recyclerView.setAdapter(userAdapter);
@@ -72,7 +73,7 @@ public class TablesSelector extends AppCompatActivity {
                 refreshLayout.setRefreshing(false);
                 progressCircular.setVisibility(View.GONE);
                 if (result.has("lists_table")) {
-                    userAdapter.updateData(result.getJSONArray("lists_table"));
+                    userAdapter.updateData(result.getJSONArray("lists_table"), result.getString("connectionUsername"));
                 }
             }catch (Exception error){
                 Log.e("errnos", error.getMessage());

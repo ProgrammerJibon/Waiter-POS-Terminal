@@ -3,7 +3,6 @@ package io.jibon.apps.waiter.Adapters;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,9 +18,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import io.jibon.apps.waiter.R;
 import io.jibon.apps.waiter.TableFullScreenView;
 
@@ -29,6 +25,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     protected JSONArray userList;
     protected Activity activity;
+    protected String connectionUsername;
 
     public UserAdapter(Activity activity, JSONArray userList) {
         this.userList = userList;
@@ -36,8 +33,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void updateData(JSONArray newData) {
+    public void updateData(JSONArray newData, String connectionUsername) {
         this.userList = newData;
+        this.connectionUsername = connectionUsername;
         this.notifyDataSetChanged();
     }
 
@@ -64,6 +62,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                 try {
                     intent.putExtra("tableID", user.getString("table_id"));
                     intent.putExtra("tableName", user.getString("table_name"));
+                    intent.putExtra("connectionUsername", connectionUsername);
                     if (user.has("current_status")){
                         JSONObject current_status = user.getJSONObject("current_status");
                         intent.putExtra("vat", current_status.getString("vat"));

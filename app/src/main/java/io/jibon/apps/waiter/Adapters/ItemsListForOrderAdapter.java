@@ -51,7 +51,7 @@ public class ItemsListForOrderAdapter extends RecyclerView.Adapter<ItemsListForO
             String itemName = item.getString("item_name");
             Float itemPrice = Float.parseFloat(item.getString("item_price"));
             holder.nameOfItem.setText(itemName);
-            holder.priceOfItem.setText("$"+String.valueOf(itemPrice));
+            holder.priceOfItem.setText("€" + itemPrice);
 
             holder.orderButton.setOnClickListener(v -> {
                 int quantity = Integer.parseInt(String.valueOf(holder.quantityOfItem.getText()));
@@ -117,7 +117,7 @@ public class ItemsListForOrderAdapter extends RecyclerView.Adapter<ItemsListForO
                 orderButton = view.findViewById(R.id.addBtn);
             }catch (Exception e){
                 Log.e("errnos", e.getMessage());
-            };
+            }
         }
     }
 }
