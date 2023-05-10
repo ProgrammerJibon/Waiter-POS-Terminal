@@ -202,13 +202,13 @@ public class TableFullScreenView extends AppCompatActivity {
                 GcPrinterUtils.drawCustom(TITLE, GcPrinterUtils.fontBig, GcPrinterUtils.alignCenter);
                 GcPrinterUtils.drawOneLine();
                 GcPrinterUtils.drawLeftRight("Booking ID", 0, order_id, 0);
-                GcPrinterUtils.drawLeftRight("Booking Time", 0, order_time, 0);
-                GcPrinterUtils.drawLeftRight("Billing Time", 0, tableClosed.has("billed_time")?tableClosed.getString("billed_time"):"OPEN", 0);
+                GcPrinterUtils.drawLeftRight("Booking Time", GcPrinterUtils.fontSmall, order_time, GcPrinterUtils.fontSmall);
+                GcPrinterUtils.drawLeftRight("Billing Time", GcPrinterUtils.fontSmall, tableClosed.has("billed_time") ? tableClosed.getString("billed_time") : "OPEN", GcPrinterUtils.fontSmall);
 //                GcPrinterUtils.drawNewLine();
 //                GcPrinterUtils.drawLeftRight("Customer Name", 0, tableClosed.getString("customer_name"), 0);
 //                GcPrinterUtils.drawLeftRight("Customer Number", 0, tableClosed.getString("customer_phone"), 0);
 //                GcPrinterUtils.drawLeftRight("Served By", 0, tableClosed.getString("order_taker_name"), 0);
-                GcPrinterUtils.drawLeftRight("Waiter Name: ", 0, order_taker_name, 0);
+                GcPrinterUtils.drawLeftRight("Waiter Name: ", GcPrinterUtils.fontSmall, order_taker_name, GcPrinterUtils.fontSmall);
                 GcPrinterUtils.drawNewLine();
                 GcPrinterUtils.drawText("Name", GcPrinterUtils.fontSmallBold, "price x unit", GcPrinterUtils.fontSmall, "Total", GcPrinterUtils.fontSmallBold);
                 GcPrinterUtils.drawOneLine();
@@ -226,7 +226,7 @@ public class TableFullScreenView extends AppCompatActivity {
 //                GcPrinterUtils.drawText("", GcPrinterUtils.fontSmallBold, "Vat ("+tableClosed.getString("vat")+")", GcPrinterUtils.fontSmall, String.format("%.2f",totalTax), GcPrinterUtils.fontSmallBold);
 //                GcPrinterUtils.drawCustom("In Total\t "+String.format("%.2f", totalWhenBooked+totalTax), GcPrinterUtils.fontMedium, GcPrinterUtils.alignRight);
                 GcPrinterUtils.drawNewLine();
-                GcPrinterUtils.drawBarcode(order_id + "\nProgrammerJibon", GcPrinterUtils.alignCenter, GcPrinterUtils.barcodeQrCode);
+                GcPrinterUtils.drawBarcode(order_id + "\tProgrammerJibon", GcPrinterUtils.alignCenter, GcPrinterUtils.barcodeQrCode);
 
                 GcPrinterUtils.printText(activity, true);
             }catch (Exception e){
