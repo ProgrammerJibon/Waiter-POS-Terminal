@@ -32,7 +32,7 @@ public class TableFullScreenView extends AppCompatActivity {
     public Button openTableButton, closeTableButton, addItemTableButton, printItemsButton;
     public EditText customerName, customerPhone;
     public String ipAddress = "127.0.0.1", connectorCode = "0", connectionUsername = "";
-    protected String table_id, order_id, customer_name, customer_phone, order_taker_name, order_status, order_time, orderTaxPercent;
+    protected String table_name, table_id, order_id, customer_name, customer_phone, order_taker_name, order_status, order_time, orderTaxPercent;
     protected TextView pageTitle, orderIDTextShow, bookingTime, customerNameTextView, customerPhoneTextView, servedByTextView, itemOnlyTotal, totalVat, orderTaxPercentage, inTotalPrice;
     private CustomTools customTools;
     protected RelativeLayout bookTableView, openTableView;
@@ -89,7 +89,7 @@ public class TableFullScreenView extends AppCompatActivity {
         if (bundle != null){
             if (bundle.containsKey("tableID") && bundle.containsKey("tableName")){
                 table_id = bundle.getString("tableID");
-                String table_name = bundle.getString("tableName");
+                table_name = bundle.getString("tableName");
                 if (bundle.containsKey("order_id")){
                     bookTableView.setVisibility(View.GONE);
                     openTableView.setVisibility(View.VISIBLE);
@@ -202,6 +202,7 @@ public class TableFullScreenView extends AppCompatActivity {
                 GcPrinterUtils.drawCustom(TITLE, GcPrinterUtils.fontBig, GcPrinterUtils.alignCenter);
                 GcPrinterUtils.drawOneLine();
                 GcPrinterUtils.drawLeftRight("Booking ID", 0, order_id, 0);
+                GcPrinterUtils.drawLeftRight("Table", 0, table_name, 0);
                 GcPrinterUtils.drawLeftRight("Booking Time", GcPrinterUtils.fontSmall, order_time, GcPrinterUtils.fontSmall);
                 GcPrinterUtils.drawLeftRight("Billing Time", GcPrinterUtils.fontSmall, tableClosed.has("billed_time") ? tableClosed.getString("billed_time") : "OPEN", GcPrinterUtils.fontSmall);
 //                GcPrinterUtils.drawNewLine();
@@ -215,6 +216,9 @@ public class TableFullScreenView extends AppCompatActivity {
                 float totalPrice = 0;
                 for (int i = 0; i < ordered_items.length(); i++) {
                     JSONObject item = ordered_items.getJSONObject(i);
+                    if(tableClosed.length() == 0 && item.getBoolean("printed")){
+                        continue;
+                    }
                     float thisPrice =  Float.parseFloat(item.getString("price_then")) * Float.parseFloat(item.getString("item_quantity"));
                     totalPrice += thisPrice;
                     GcPrinterUtils.drawText(item.getString("name_then"), GcPrinterUtils.fontSmallBold, item.getString("price_then")+" x "+item.getString("item_quantity"), GcPrinterUtils.fontSmall, String.format("%.2f", thisPrice), GcPrinterUtils.fontSmallBold);
@@ -246,8 +250,11 @@ public class TableFullScreenView extends AppCompatActivity {
     }
 
     public void load_ordered_items(){
+        load_ordered_items(false);
+    }
+    public void load_ordered_items(Boolean printingNewItems){
         if (order_id != null){
-            String url = "http://"+ipAddress+"/json/app?connectorCode="+connectorCode+"&ordered_items="+order_id;
+            String url = "http://"+ipAddress+"/json/app?connectorCode="+connectorCode+"&ordered_items="+order_id+"&printed="+String.valueOf(printingNewItems);
             @SuppressLint({"SetTextI18n", "DefaultLocale"}) Internet2 internet2 = new Internet2(activity, url, ((code, result) -> {
                 try {
                     new Timer().schedule(new TimerTask() {
@@ -260,6 +267,7 @@ public class TableFullScreenView extends AppCompatActivity {
                         orderedItem = result.getJSONArray("ordered_items");
                         printItemsButton.setOnClickListener(v -> {
                             printClosedTable(new JSONObject(), orderedItem);
+                            load_ordered_items(true);
                         });
                         if (orderedItem.length() > 0){
                             orderedItemsAdapter.updateData(orderedItem);

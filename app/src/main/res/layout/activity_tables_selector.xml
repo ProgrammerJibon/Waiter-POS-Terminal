@@ -13,8 +13,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:text="Debug v.1.6"
-        android:textColor="@color/gray"
-        android:visibility="gone" />
+        android:textColor="@color/gray" />
 
     <TextView
         android:id="@+id/appTitle"

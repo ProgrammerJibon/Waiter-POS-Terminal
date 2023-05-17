@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2024, Calendar.JANUARY, 31, 0, 0, 0);
+        calendar.set(2023, Calendar.JUNE, 31, 0, 0, 0);
         licenseTime = calendar.getTimeInMillis() / 1000;
 
 

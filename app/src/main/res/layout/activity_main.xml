@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1C1B17"
+    android:background="#FFFFFF"
     tools:ignore="all"
     tools:context=".MainActivity2">
 
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Debug v.1.7"
         android:textColor="@color/black"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"/>
 
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:text="Enter IP address: "
                 android:layout_marginTop="8dp"
-                android:textColor="@color/white"
+                android:textColor="@color/gray"
                 />
 
             <EditText
@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textUri"
                 android:padding="18dp"
-                android:textColor="@color/white"
+                android:textColor="@color/deep_pink"
                 android:textColorHint="@color/gray"
                 android:background="@drawable/edittext_style_bg"
                 android:layout_marginVertical="8dp"
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:text="Enter Code: "
                 android:layout_marginTop="8dp"
-                android:textColor="@color/white"
+                android:textColor="@color/gray"
                 />
 
             <EditText
@@ -70,7 +70,7 @@
                 android:padding="18dp"
                 android:maxLength="8"
                 android:background="@drawable/edittext_style_bg"
-                android:textColor="@color/white"
+                android:textColor="@color/deep_pink"
                 android:textColorHint="@color/gray"
                 android:layout_marginVertical="8dp"
                 android:hint="1234 5678" />

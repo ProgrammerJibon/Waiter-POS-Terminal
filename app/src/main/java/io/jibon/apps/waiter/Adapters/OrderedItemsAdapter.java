@@ -2,6 +2,7 @@ package io.jibon.apps.waiter.Adapters;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -45,6 +46,11 @@ public class OrderedItemsAdapter extends RecyclerView.Adapter<OrderedItemsAdapte
             JSONObject item = userList.getJSONObject(position);
             holder.itemSL.setText(String.valueOf(position+1));
             holder.itemName.setText(item.getString("name_then"));
+            if (!item.getBoolean("printed")){
+                holder.itemName.setTextColor(Color.RED);
+            }else{
+                holder.itemName.setTextColor(Color.GRAY);
+            }
             holder.itemQuantity.setText(item.getString("item_quantity"));
             holder.itemPrice.setText(item.getString("price_then"));
             float TOTAL = Float.parseFloat(item.getString("item_quantity")) * Float.parseFloat(item.getString("price_then"));

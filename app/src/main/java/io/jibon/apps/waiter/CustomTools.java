@@ -24,7 +24,8 @@ public class CustomTools {
     protected SharedPreferences preferences;
     protected SharedPreferences.Editor preferencesEditor;
     protected Activity activity;
-    public static String TITLE = "AlMukhtar Café";
+    public static String TITLE = "PT-App";
+    public static Boolean debug = true;
 
     public CustomTools(Activity activity) {
         this.activity = activity;
